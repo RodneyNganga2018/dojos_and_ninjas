@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>New Ninja</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-5">New Ninja</h1>
+        <form action="/dojos/add/ninja" method="POST" class="mb-5 pb-5 border-bottom border-5">
+            <div class="row g-5 align-items-center mb-3">
+                <div class="col-auto me-3">
+                    <label for="dojo" class="col-form-label">Dojo:</label>
+                </div>
+                <div class="col-auto">
+                    <select name="dojo" class="form-select">
+                        <option selected>Select a dojo...</option>
+                        {% for dojo in dojo_template %}
+                        <option value="{{dojo['dojo_id']}}">{{dojo['dojo']}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row gl-5 align-items-center mb-3">
+                <div class="col-auto">
+                    <label for="first_name" class='col-form-label'>First Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" name="first_name" id="first_name" class="form-control">
+                </div>
+            </div>
+            <div class="row gl-5 align-items-center mb-3">
+                <div class="col-auto">
+                    <label for="last_name" class='col-form-label'>Last Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" name="last_name" id="last_name" class="form-control">
+                </div>
+            </div>
+            <div class="row gl-5 align-items-center mb-3">
+                <div class="col-auto me-5">
+                    <label for="age" class='col-form-label'>Age:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" name="age" id="age" class="form-control">
+                </div>
+            </div>
+            <input type="submit" role="button" class="btn btn-primary">
+        </form>
+        <a href="http://127.0.0.1:5000/dojos" role="button" class="btn btn-outline-primary btn-lg">Home</a>
+    </div>
+</body>
+</html>

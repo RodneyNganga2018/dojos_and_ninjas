@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>Dojos</title>
+</head>
+<body>
+    <div class="container d-flex mt-5">
+        <div class="container">
+            <h1 class="mb-5">New Dojo</h1>
+            <form action="/dojos/add" method="POST">
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="dojo_name" class="col-form-label col-4">Name:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" name="dojo_name" id="dojo_name" class="form-control col-4">
+                    </div>
+                </div>
+                <input type="submit" role="button" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="container">
+            <h1 class="mb-5">All Dojos</h1>
+            <div class="container border border-3 rounded p-3 mb-3 overflow-auto" style="height:500px;">
+                {% for dojo in dojo_template %}
+                <div class="mb-3">
+                    <a href="http://127.0.0.1:5000/dojos/{{dojo['dojo_id']}}">{{dojo['dojo']}}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="http://127.0.0.1:5000/ninjas" role="button" class="btn btn-outline-success">Add Ninja</a>
+        </div>
+    </div>
+</body>
+</html>
